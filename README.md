@@ -25,7 +25,7 @@ pip install -r requirements.txt
 
 ### 1.2 Data
 
-For training and test datasets, the simplest way to prepare the data is to add `--download` in the [training command](#3-training-training). The program will download the data files automatically and organize them in a ready-to-use way. **[WARNING!]** This functionality currently doesn't support the dataset Imagenette. One need to manually download [Imagenette](https://s3.amazonaws.com/fast-ai-imageclas/imagenette.tgz) and move (extract) it into the directory `/data`.
+For training and test datasets, the simplest way to prepare the data is to add `--download` in the [training command](#3-training). The program will download the data files automatically and organize them in a ready-to-use way. Unfortunately, this functionality doesn't support the dataset Imagenette now. One need to manually download [Imagenette](https://s3.amazonaws.com/fast-ai-imageclas/imagenette.tgz) and move (extract) it into the directory `/data`.
 
 For additional training data used in Tab. 7 in our paper, they need to be downloaded manually from [80K-TinyImages](https://github.com/yaircarmon/semisup-adv) and [BetterDiffusionModels](https://github.com/wzekai99/DM-Improves-AT). The downloaded data should be formulated as their original guidance and put under the directory `/data`.
 
