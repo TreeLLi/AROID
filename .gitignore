@@ -1,0 +1,16 @@
+*.html
+__pycache__
+*~
+*.xlsx
+
+/script
+/output
+/server
+/model/*
+/data
+!data/*.py
+/tmp
+*tar
+/slurm_logs
+/doc
+/model_info

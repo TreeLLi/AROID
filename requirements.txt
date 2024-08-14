@@ -1,0 +1,8 @@
+addict
+pynvml
+filelock
+openpyxl
+torchattacks
+timm==0.5.4
+mergedeep
+git+https://github.com/fra31/auto-attack
