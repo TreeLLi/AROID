@@ -1,4 +1,4 @@
-# AROID: Improving Adversarial Robustness Through Online Instance-Wise Data Augmentationn	
+# AROID: Improving Adversarial Robustness Through Online Instance-Wise Data Augmentation	
 
 This is the official code repository of the paper titled "AROID: Improving Adversarial Robustness Through Online Instance-Wise Data Augmentation", which is accepted by the International Journal of Computer Vision in 2024.
 
