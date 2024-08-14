@@ -47,29 +47,29 @@ Please refer to this [Hugging Face sharepoint](https://huggingface.co/TreeLLi/AR
 
 To reproduce our result of WideResNet34-10 on CIFAR10, run:
 
-```python
-python src/train.py -a wresnet --depth 34 --width 10 -aug auto --std_ref wrn34 --aff_coef 0.4 0.2 0.1 --div_coef 0.8 --div_limits 0.1 0.3
+```bash
+python src/train.py -l [LOG] -a wresnet --depth 34 --width 10 -aug auto --std_ref wrn34 --aff_coef 0.4 0.2 0.1 --div_coef 0.8 --div_limits 0.1 0.3
 ```
 
 To reproduce our result of ViT-B/16 on Imagenette, run:
 
-```python
-python src/train.py -a vit-b -ps 16 -d inte --pretrained -wd 0.0001 --epochs 40 --annealing 36 38 --clip_grad -aug auto --aff_coef 0.3 --div_coef 0.8 --div_limits 0.2 0.3 -pb vit-b --std_ref vit-b --plr 0.1
+```bash
+python src/train.py -l [LOG] -a vit-b -ps 16 -d inte --pretrained -wd 0.0001 --epochs 40 --annealing 36 38 --clip_grad -aug auto --aff_coef 0.3 --div_coef 0.8 --div_limits 0.2 0.3 -pb vit-b --std_ref vit-b --plr 0.1
 ```
 
 There are many other arguments allowed to be specified in the running command in order to control the training. The shared arguments, between training and evaluation are stored in the `/src/config/config.py` and the task-specific arguments are defined in the corresponding configuration file under the `/src/config` folder. Please refer to the specific configuration file for the explanation and available options.
 
-Each instance of training is tagged with a unique ID which is generated after the first epoch of training is finished. This ID is printed in the console when the training is completed or interrupted. It is used to identify the model checkpoint file and parameters log. The checkpoints will be saved during training in `model/trained/[LOG]`, where `[LOG]` is the name of the experiment logbook (by default, is `log`). By default, two variants of checkpoint are saved: `pgd` and `end` for "best" and "end" checkpoints (explained in our paper). Note that when `swa` training is enabled two more checkpoints will be saved as `swa_pgd` and `swa_end`. The log of training parameters is saved in the directory `/output/log/[LOG]`. 
+Each instance of training is tagged with a unique ID which is generated after the first epoch of training is finished. This ID is printed in the console when the training is completed or interrupted. It is used to identify the model checkpoint file and parameters log. The checkpoints will be saved during training in `model/trained/[LOG]`, where `[LOG]` is the name of the experiment logbook (by default, is `log`). By default, two variants of checkpoint are saved: `pgd` and `end` for "best" and "end" checkpoints (explained in our paper), respectively. Note that when `swa` training is enabled two more checkpoints will be saved as `swa_pgd` and `swa_end`. The log of training parameters is saved in the directory `/output/log/[LOG]`. 
 
 ## 4. Evaluation
 
-To evaluate the accuracy and robustness of the "best" (`-v`) checkpoint of a model of ID `0000` against AutoAttack attack (`-a`), run:
+To evaluate the accuracy and robustness of the "best" (`-v`) checkpoint of a model of ID `0000` in the logbook `[LOG]` (`-l`) against AutoAttack attack (`-a`), run:
 
 ```bash
-python src/adversary.py 0000 -v pgd -a aa
+python src/adversary.py 0000 -l [LOG] -v pgd -a aa
 ```
 
-The evaluation results will be printed in the console and also updated in the corresponding log file in `/output/log/[LOG]` .
+The evaluation results will be printed in the console and also updated in the corresponding log file in `/output/log/[LOG]`.
 
 ## 5. File Structure
 
